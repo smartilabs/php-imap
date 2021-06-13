@@ -147,6 +147,8 @@ class Header {
         }
         if (property_exists($header, 'message_id')) {
             $this->attributes["message_id"] = str_replace(['<', '>'], '', $header->message_id);
+        } else if (property_exists($header, 'message-id')) {
+            $this->attributes["message_id"] = str_replace(['<', '>'], '', $header->{'message-id'});
         }
 
         $this->parseDate($header);
